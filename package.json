@@ -1,0 +1,81 @@
+{
+  "name": "cal-arabic",
+  "version": "1.0.0",
+  "description": "CAL Code to Arabic Unicode conversion",
+  "main": "build/cal-arabic.js",
+  "mainMin": "build/cal-arabic.min.js",
+  "module": "build/cal-arabic.esm.js",
+  "scripts": {
+    "pretest": "rollup -c",
+    "test": "mocha --reporter test/istanbul.reporter.js --recursive",
+    "prebuild": "npm test && npm run lint",
+    "build": "npm run bundle",
+    "postbuild": "npm run doc",
+    "bundle": "rollup -c --environment BUILD:production",
+    "build:dev": "rollup -c --environment BUILD:dev",
+    "lint": "eslint src test",
+    "doc": "jsdoc2md -t doc/readme.hbs src/*.js > README.md",
+    "coverage": "cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "prepare": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "no-plusplus": 0,
+      "comma-dangle": 0,
+      "no-nested-ternary": 0,
+      "function-paren-newline": 0,
+      "import/extensions": 0,
+      "arrow-parens": 0
+    }
+  },
+  "files": [
+    "build/*.js"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peshitta/cal-arabic.git"
+  },
+  "keywords": [
+    "CAL",
+    "Arabic",
+    "Aramaic",
+    "Syriac",
+    "Peshitta",
+    "Peshitto",
+    "Pshitta",
+    "Pshitto",
+    "Sedra.js",
+    "Sedrajs",
+    "Sedra",
+    "Estrangela",
+    "Estrangelo"
+  ],
+  "author": "Greg Borota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peshitta/cal-arabic/issues"
+  },
+  "homepage": "https://github.com/peshitta/cal-arabic#readme",
+  "dependencies": {
+    "aramaic-mapper": "^1.0.9",
+    "cal-code-util": "^1.0.9",
+    "arabic-code-util": "^1.0.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "istanbul": "^0.4.5",
+    "jsdoc-to-markdown": "^3.0.0",
+    "mocha": "^4.0.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-istanbul": "^1.1.0",
+    "rollup-plugin-uglify": "^2.0.1"
+  }
+}
