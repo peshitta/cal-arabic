@@ -63,7 +63,7 @@
   "dependencies": {
     "aramaic-mapper": "^1.0.9",
     "cal-code-util": "^1.0.9",
-    "arabic-code-util": "^1.0.1"
+    "arabic-code-util": "^1.0.2"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
