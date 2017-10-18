@@ -79,11 +79,11 @@ const theh = '\u062B'; // ث ARABIC LETTER THEH
 
 /**
  * @private
- * Maps input character to CAL char
- * @param { string } c Syriac input character
+ * Maps input character to Arabic character
+ * @param { string } c CAL input character
  * @param { Object.<string, string> } fromTo mapping dictionary
  * @param { Object } wordProps optional word settings
- * @returns { string } CAL mapped char
+ * @returns { string } Arabic mapped char
  */
 const mapCallback = (word, i, fromTo, wordProps) => {
   const c = word.charAt(i);
