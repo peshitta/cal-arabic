@@ -99,6 +99,11 @@ describe('CAL', () => {
         'sut.toArabic vocalised with P'
       );
     });
+    it('Word with un-mapped chars', () => {
+      const word = sut.toArabic('AZAEDT');
+      const wordExpected = 'AZAِDط';
+      test.strictEqual(word, wordExpected, 'sut.toArabic_wO un-mapped char');
+    });
     it('Word with Hebrew Sin', () => {
       const word = sut.toArabic(')Pbhwh&');
       const wordExpected = 'افبهوهس';
