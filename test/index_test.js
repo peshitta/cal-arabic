@@ -123,6 +123,11 @@ describe('CAL', () => {
         'sut.toArabic vocalised with Shin'
       );
     });
+    it('Punctuation', () => {
+      const word = sut.toArabic(';)o)ar?');
+      const wordExpected = '؛آاَر؟';
+      test.strictEqual(word, wordExpected, 'sut.toArabic invalid rukkakha');
+    });
     it('Invalid Rukkakha', () => {
       const word = sut.toArabic(')Pbh,swh&');
       const wordExpected = 'افبهسوهس';
@@ -152,30 +157,6 @@ describe('CAL', () => {
       const word = sut.toArabic(0);
       const wordExpected = 0;
       test.strictEqual(word, wordExpected, 'sut.toArabic_zero');
-    });
-  });
-  describe('Mapped writing', () => {
-    it('Consonants length', () => {
-      test.strictEqual(
-        sut.mapper.fromWriting.consonants.length,
-        sut.mapper.toWriting.consonants.length,
-        'Length differs'
-      );
-      test.ok(
-        sut.mapper.fromWriting.consonants.length > 22,
-        'Length greater than 22'
-      );
-    });
-    it('Vowels length', () => {
-      test.strictEqual(
-        sut.mapper.fromWriting.vowels.length,
-        sut.mapper.toWriting.vowels.length,
-        'Length differs'
-      );
-      test.ok(
-        sut.mapper.fromWriting.vowels.length > 5,
-        'Length greater than 5'
-      );
     });
   });
 });
@@ -233,8 +214,19 @@ describe('CAL', () => {
         'Length differs'
       );
       test.ok(
-        sut.mapper.fromWriting.diacritics.length = 4,
+        (sut.mapper.fromWriting.diacritics.length = 4),
         'Length equals 4'
+      );
+    });
+    it('Punctuation length', () => {
+      test.strictEqual(
+        sut.mapper.fromWriting.punctuation.length,
+        sut.mapper.toWriting.punctuation.length,
+        'Length differs'
+      );
+      test.ok(
+        (sut.mapper.fromWriting.punctuation.length = 6),
+        'Length equals 6'
       );
     });
   });

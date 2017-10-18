@@ -4,6 +4,7 @@ import {
   allConsonants as calConsonants,
   vowels as calVowels,
   diacritics as calDiacritics,
+  punctuation as calPunctuation,
   isDotted as isCalDotted
 } from 'cal-code-util';
 import {
@@ -17,7 +18,12 @@ import {
  * @const
  * @type { Writing }
  */
-const calWriting = new Writing(calConsonants, calVowels, calDiacritics);
+const calWriting = new Writing(
+  calConsonants,
+  calVowels,
+  calDiacritics,
+  calPunctuation
+);
 
 const feh = '\u0641'; // ف ARABIC LETTER FEH
 const seen = '\u0633'; // س ARABIC LETTER SEEN
@@ -39,7 +45,15 @@ const arabicWriting = new Writing(
     arabicVowels[2], // E
     arabicVowels[3] // O:
   ]),
-  Object.freeze(['', '', '', ''])
+  Object.freeze(['', '', '', '']),
+  Object.freeze([
+    '\u061B', // ؛ Arabic Semicolon - also used with Thaana and Syriac in modern text
+    '\u061F', // ؟ Arabic Question Mark - also used with Thaana and Syriac in modern text
+    '\u0021', // ! Exclamation Mark - regular ASCII exclamation mark
+    '.',
+    '-',
+    ':'
+  ])
 );
 
 /**

@@ -1,6 +1,6 @@
 {
   "name": "cal-arabic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CAL Code to Arabic Unicode conversion",
   "main": "build/cal-arabic.js",
   "mainMin": "build/cal-arabic.min.js",
@@ -61,14 +61,14 @@
   },
   "homepage": "https://github.com/peshitta/cal-arabic#readme",
   "dependencies": {
-    "aramaic-mapper": "^1.0.9",
-    "cal-code-util": "^1.0.9",
-    "arabic-code-util": "^1.0.2"
+    "arabic-code-util": "^1.0.3",
+    "aramaic-mapper": "^1.1.0",
+    "cal-code-util": "^1.1.1"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
-    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.7.0",
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.0",
