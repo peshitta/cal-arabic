@@ -1,6 +1,6 @@
 {
   "name": "cal-arabic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CAL Code to Arabic Unicode conversion",
   "main": "build/cal-arabic.js",
   "mainMin": "build/cal-arabic.min.js",

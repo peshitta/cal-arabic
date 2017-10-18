@@ -72,6 +72,10 @@ const damma = '\u064F'; //  ُ Arabic damma - Garshuni: u
 const waw = '\u0648'; // و ARABIC LETTER WAW
 const yeh = '\u064A'; // ي ARABIC LETTER YEH
 const madda = '\u0622'; // آ ARABIC LETTER ALEF WITH MADDA ABOVE
+const ghain = '\u063A'; // غ ARABIC LETTER GHAIN
+const thal = '\u0630'; // ذ ARABIC LETTER THAL
+const khah = '\u062E'; // خ ARABIC LETTER KHAH
+const theh = '\u062B'; // ث ARABIC LETTER THEH
 
 /**
  * @private
@@ -89,6 +93,18 @@ const mapCallback = (word, i, fromTo, wordProps) => {
   let m = '';
   const n = word.charAt(i + 1);
   switch (c) {
+    case 'g':
+      m = n === ',' ? ghain : to(c, fromTo);
+      break;
+    case 'd':
+      m = n === ',' ? thal : to(c, fromTo);
+      break;
+    case 'k':
+      m = n === ',' ? khah : to(c, fromTo);
+      break;
+    case 't':
+      m = n === ',' ? theh : to(c, fromTo);
+      break;
     case 'y':
       m =
         n === 'i' || n === 'e'

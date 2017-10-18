@@ -7,7 +7,7 @@ describe('CAL', () => {
       const word = sut.toArabic('dqsry)-dpylypws');
       const wordExpected = 'دقسريا-دفيليفوس';
       const vocalised = sut.toArabic("d'qesariya)-d,p,yilyip'wOs");
-      const vocalisedExpected = 'دقِسَرِيَا-دفِيلِيفُوس';
+      const vocalisedExpected = 'دقِسَرِيَا-ذفِيلِيفُوس';
       test.strictEqual(word, wordExpected, 'sut.toArabic_generic consonant');
       test.strictEqual(
         vocalised,
@@ -30,8 +30,8 @@ describe('CAL', () => {
     it('Alef superscript', () => {
       const word = sut.toArabic('$mk');
       const wordExpected = 'شمك';
-      const vocalised = sut.toArabic('$mok');
-      const vocalisedExpected = 'شمٰك';
+      const vocalised = sut.toArabic('$mok,');
+      const vocalisedExpected = 'شمٰخ';
       test.strictEqual(word, wordExpected, 'sut.toArabic_madda consonant');
       test.strictEqual(
         vocalised,
@@ -43,7 +43,7 @@ describe('CAL', () => {
       const word = sut.toArabic('dylydwth');
       const wordExpected = 'ديليدوته';
       const vocalised = sut.toArabic("d'yilyid,wut,ehE");
-      const vocalisedExpected = 'دِيلِيدُوتِهِ';
+      const vocalisedExpected = 'دِيلِيذُوثِهِ';
       test.strictEqual(word, wordExpected, 'sut.toArabic_yi consonant');
       test.strictEqual(
         vocalised,
@@ -112,10 +112,10 @@ describe('CAL', () => {
       );
     });
     it('Word with Hebrew Shin', () => {
-      const word = sut.toArabic(')d$)');
-      const wordExpected = 'ادشا';
-      const vocalised = sut.toArabic(')od,$o)');
-      const vocalisedExpected = 'آدشَا';
+      const word = sut.toArabic(')g$)');
+      const wordExpected = 'اجشا';
+      const vocalised = sut.toArabic(')og,$o)');
+      const vocalisedExpected = 'آغشَا';
       test.strictEqual(word, wordExpected, 'sut.toArabic consonant with Shin');
       test.strictEqual(
         vocalised,
@@ -123,10 +123,15 @@ describe('CAL', () => {
         'sut.toArabic vocalised with Shin'
       );
     });
+    it('Begadkepat', () => {
+      const word = sut.toArabic('begadkepat');
+      const wordExpected = 'بِجَدكِفَت';
+      test.strictEqual(word, wordExpected, 'sut.toArabic punctuation');
+    });
     it('Punctuation', () => {
       const word = sut.toArabic(';)o)ar?');
       const wordExpected = '؛آاَر؟';
-      test.strictEqual(word, wordExpected, 'sut.toArabic invalid rukkakha');
+      test.strictEqual(word, wordExpected, 'sut.toArabic punctuation');
     });
     it('Invalid Rukkakha', () => {
       const word = sut.toArabic(')Pbh,swh&');
