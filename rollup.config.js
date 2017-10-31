@@ -41,9 +41,9 @@ const input = 'src/main.js';
 const name = 'calArabic';
 const format = 'umd';
 const globals = {
+  'arabic-code-util': 'arabicCodeUtil',
   'aramaic-mapper': 'aramaicMapper',
-  'cal-code-util': 'calCodeUtil',
-  'arabic-code-util': 'arabicCodeUtil'
+  'cal-code-util': 'calCodeUtil'
 };
 const sourcemap = !isProduction;
 const plugins = [buble()];
