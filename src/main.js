@@ -5,7 +5,9 @@ import {
   vowels as calVowels,
   diacritics as calDiacritics,
   punctuation as calPunctuation,
-  isDotted as isCalDotted
+  isDotted as isCalDotted,
+  isVowel,
+  isBdwlPrefix
 } from 'cal-code-util';
 import {
   consonants as arabicConsonants,
@@ -79,6 +81,26 @@ const theh = '\u062B'; // ث ARABIC LETTER THEH
 
 /**
  * @private
+ * Return true Y|w+vowel is flipped a la Sedra
+ * @param { string } word word to test
+ * @param { number } index position in word to start checking from
+ * @returns { boolean } true if Y|w+vowel is flipped
+ */
+const isYwFlipped = (word, index) => {
+  if (index < 1) {
+    return false; // can't start word with a vowel
+  }
+  if (isVowel(word.charAt(index - 1))) {
+    return false; // can't follow vowel by vowel
+  }
+  if (word.charAt(index - 1) === ')') {
+    return index === 1 || isBdwlPrefix(word, index - 2); // initial Alap is followed by vowel
+  }
+  return true;
+};
+
+/**
+ * @private
  * Maps input character to Arabic character
  * @param { string } c CAL input character
  * @param { Object.<string, string> } fromTo mapping dictionary
@@ -108,13 +130,13 @@ const mapCallback = (word, i, fromTo, wordProps) => {
     case 'y':
       m =
         n === 'i' || n === 'e'
-          ? kasra + yeh // Arabic stores as (iy)
+          ? isYwFlipped(word, i) ? kasra + yeh : yeh + kasra
           : to(c, fromTo);
       break;
     case 'w':
       m =
         n === 'u' || n === 'O'
-          ? damma + waw // Arabic stores as (uw)
+          ? isYwFlipped(word, i) ? damma + waw : waw + damma
           : to(c, fromTo);
       break;
     case ')':
